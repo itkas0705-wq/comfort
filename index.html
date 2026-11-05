@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Комфорт+ — твоя цифровая среда</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app">
+
+    <aside class="sidebar">
+      <a class="brand" href="#" data-page="today">
+        <span class="brand-icon">+</span>
+        <span>Комфорт<span class="brand-light">+</span></span>
+      </a>
+
+      <div class="side-label">РАБОЧЕЕ ПРОСТРАНСТВО</div>
+
+      <nav class="navigation">
+        <button class="nav-link active" data-page="today">
+          <span class="nav-icon">⌂</span> Сегодня
+        </button>
+        <button class="nav-link" data-page="tasks">
+          <span class="nav-icon">✓</span> Мои задачи
+          <span class="nav-count" id="taskCount">0</span>
+        </button>
+        <button class="nav-link" data-page="scenarios">
+          <span class="nav-icon">◈</span> Сценарии
+        </button>
+        <button class="nav-link" data-page="ideas">
+          <span class="nav-icon">✧</span> Рекомендации
+        </button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="side-label">ПЕРСОНАЛИЗАЦИЯ</div>
+        <button class="nav-link" data-page="settings">
+          <span class="nav-icon">⚙</span> Настройки
+        </button>
+
+        <div class="sidebar-note">
+          <div class="note-icon">✦</div>
+          <strong>Меньше рутины.</strong>
+          <p>Больше времени на то, что действительно важно.</p>
+        </div>
+
+        <div class="profile">
+          <div class="avatar" id="avatarLetter">П</div>
+          <div>
+            <strong id="sidebarName">Пользователь</strong>
+            <small>Личное пространство</small>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="mobile-brand">Комфорт<span>+</span></div>
+        <div class="topbar-right">
+          <span class="status-dot"></span>
+          <span class="status-text">Ваше пространство готово</span>
+          <button class="icon-button" id="quickSettings" title="Настройки">⚙</button>
+        </div>
+      </header>
+
+      <section class="page active" id="page-today">
+        <div class="welcome-row">
+          <div>
+            <div class="eyebrow" id="todayDate">ВАШ ДЕНЬ</div>
+            <h1>Всё под контролем,<br><span id="welcomeName">Пользователь</span>.</h1>
+            <p class="subtitle">Вот что происходит в вашем пространстве сегодня.</p>
+          </div>
+          <div class="welcome-decoration">
+            <div class="deco-circle circle-one"></div>
+            <div class="deco-circle circle-two"></div>
+            <div class="deco-plus">+</div>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <article class="stat-card">
+            <div class="stat-top"><span>Всего задач</span><span class="stat-symbol blue">▤</span></div>
+            <strong id="totalTasks">0</strong>
+            <small>В вашем списке</small>
+          </article>
+          <article class="stat-card">
+            <div class="stat-top"><span>Выполнено</span><span class="stat-symbol green">✓</span></div>
+            <strong id="doneTasks">0</strong>
+            <small>Уже сделано</small>
+          </article>
+          <article class="stat-card">
+            <div class="stat-top"><span>Осталось</span><span class="stat-symbol orange">◷</span></div>
+            <strong id="leftTasks">0</strong>
+            <small>Ещё предстоит</small>
+          </article>
+        </div>
+
+        <div class="content-grid">
+          <section class="panel tasks-panel">
+            <div class="panel-heading">
+              <div>
+                <div class="eyebrow">ВАШ ПЛАН</div>
+                <h2>Задачи на сегодня</h2>
+              </div>
+              <button class="text-button" data-page="tasks">Все задачи →</button>
+            </div>
+
+            <div class="progress-area">
+              <div class="progress-label">
+                <span>Прогресс дня</span>
+                <strong id="progressPercent">0%</strong>
+              </div>
+              <div class="progress-track"><div id="progressBar"></div></div>
+            </div>
+
+            <div id="todayTaskList" class="task-list"></div>
+            <button class="add-task-button" id="openTaskModal">＋ Добавить задачу</button>
+          </section>
+
+          <section class="right-column">
+            <div class="panel focus-panel">
+              <div class="eyebrow">МАЛЕНЬКИЙ ШАГ</div>
+              <h2>Начните с главного.</h2>
+              <p>Необязательно делать всё сразу. Выберите одну задачу и уделите ей внимание.</p>
+              <button class="primary-button" data-page="tasks">Открыть задачи <span>→</span></button>
+              <div class="focus-decoration">✳</div>
+            </div>
+
+            <div class="panel mini-panel">
+              <div class="panel-heading">
+                <div>
+                  <div class="eyebrow">БЫСТРЫЙ ДОСТУП</div>
+                  <h2>Сценарии</h2>
+                </div>
+                <button class="text-button" data-page="scenarios">Все →</button>
+              </div>
+              <div class="mini-scenarios">
+                <button class="mini-scenario" data-scenario="Утро"><span>☀</span> Утро</button>
+                <button class="mini-scenario" data-scenario="Учебный день"><span>▣</span> Учёба</button>
+                <button class="mini-scenario" data-scenario="Домой"><span>⌂</span> Домой</button>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <div class="bottom-tip">
+          <span>✦</span>
+          <div><strong>Комфорт начинается с простоты.</strong><br>Настройте пространство под себя — оставьте только нужное.</div>
+        </div>
+      </section>
+
+      <section class="page" id="page-tasks">
+        <div class="page-heading">
+          <div>
+            <div class="eyebrow">ОРГАНИЗАЦИЯ</div>
+            <h1>Мои задачи</h1>
+            <p class="subtitle">Все важные дела в одном месте.</p>
+          </div>
+          <button class="primary-button" id="openTaskModal2">＋ Новая задача</button>
+        </div>
+
+        <div class="filter-row">
+          <button class="filter-button active" data-filter="all">Все</button>
+          <button class="filter-button" data-filter="active">Активные</button>
+          <button class="filter-button" data-filter="done">Выполненные</button>
+        </div>
+        <div id="allTaskList" class="all-task-list"></div>
+      </section>
+
+      <section class="page" id="page-scenarios">
+        <div class="page-heading">
+          <div>
+            <div class="eyebrow">АВТОМАТИЗАЦИЯ</div>
+            <h1>Жизненные сценарии</h1>
+            <p class="subtitle">Готовые последовательности действий для повседневных ситуаций.</p>
+          </div>
+        </div>
+
+        <div class="scenario-grid">
+          <article class="scenario-card">
+            <div class="scenario-emoji sun">☀</div>
+            <div class="eyebrow">НАЧАЛО ДНЯ</div>
+            <h2>Утро</h2>
+            <p>Спокойно подготовиться к новому дню.</p>
+            <ul><li>Проверить расписание</li><li>Посмотреть задачи</li><li>Подготовить необходимые вещи</li></ul>
+            <button class="outline-button" data-scenario="Утро">Запустить сценарий →</button>
+          </article>
+
+          <article class="scenario-card">
+            <div class="scenario-emoji study">▣</div>
+            <div class="eyebrow">ПЛАНИРОВАНИЕ</div>
+            <h2>Учебный день</h2>
+            <p>Собрать учебные дела в одном месте.</p>
+            <ul><li>Проверить расписание занятий</li><li>Посмотреть домашние задания</li><li>Подготовить материалы</li></ul>
+            <button class="outline-button" data-scenario="Учебный день">Запустить сценарий →</button>
+          </article>
+
+          <article class="scenario-card">
+            <div class="scenario-emoji home">⌂</div>
+            <div class="eyebrow">ПОВСЕДНЕВНОСТЬ</div>
+            <h2>Домой</h2>
+            <p>Не забыть о домашних делах.</p>
+            <ul><li>Проверить список покупок</li><li>Посмотреть домашние задачи</li><li>Запланировать отдых</li></ul>
+            <button class="outline-button" data-scenario="Домой">Запустить сценарий →</button>
+          </article>
+
+          <article class="scenario-card">
+            <div class="scenario-emoji weekend">✿</div>
+            <div class="eyebrow">ОТДЫХ</div>
+            <h2>Выходной</h2>
+            <p>Освободить время для приятных занятий.</p>
+            <ul><li>Выбрать занятие для отдыха</li><li>Запланировать прогулку</li><li>Оставить время без дел</li></ul>
+            <button class="outline-button" data-scenario="Выходной">Запустить сценарий →</button>
+          </article>
+        </div>
+        <p class="helper-text"></p>
+      </section>
+
+      <section class="page" id="page-ideas">
+        <div class="page-heading">
+          <div>
+            <div class="eyebrow">ПОЛЕЗНЫЕ ИДЕИ</div>
+            <h1>Рекомендации</h1>
+            <p class="subtitle">Небольшие советы, которые помогают сделать день проще.</p>
+          </div>
+        </div>
+
+        <div class="recommendation-grid">
+          <article class="recommendation-card">
+            <span class="recommend-icon blue-bg">◷</span>
+            <div class="eyebrow">ПЛАНИРОВАНИЕ</div>
+            <h2>Начните с трёх приоритетов</h2>
+            <p>Выберите три наиболее важные задачи на день. Остальное можно распределить на свободное время.</p>
+          </article>
+          <article class="recommendation-card">
+            <span class="recommend-icon green-bg">✧</span>
+            <div class="eyebrow">ЦИФРОВАЯ ГИГИЕНА</div>
+            <h2>Уберите лишние уведомления</h2>
+            <p>Оставьте только действительно важные оповещения. Так цифровая среда будет меньше отвлекать.</p>
+          </article>
+          <article class="recommendation-card">
+            <span class="recommend-icon orange-bg">▤</span>
+            <div class="eyebrow">ОРГАНИЗАЦИЯ</div>
+            <h2>Объединяйте похожие дела</h2>
+            <p>Похожие задачи удобнее выполнять вместе — это помогает реже переключаться между занятиями.</p>
+          </article>
+          <article class="recommendation-card">
+            <span class="recommend-icon purple-bg">♡</span>
+            <div class="eyebrow">БАЛАНС</div>
+            <h2>Оставляйте время на отдых</h2>
+            <p>Планирование должно помогать жить, а не превращать весь день в бесконечный список дел.</p>
+          </article>
+        </div>
+        <div class="recommendation-note">✦ Рекомендации носят информационный характер. Решения всегда остаются за пользователем.</div>
+      </section>
+
+      <section class="page" id="page-settings">
+        <div class="page-heading">
+          <div>
+            <div class="eyebrow">ВАШЕ ПРОСТРАНСТВО</div>
+            <h1>Настройки</h1>
+            <p class="subtitle">Настройте «Комфорт+» под себя.</p>
+          </div>
+        </div>
+
+        <div class="settings-panel">
+          <div class="setting-block">
+            <div><h2>Имя пользователя</h2><p>Оно будет отображаться на главной странице.</p></div>
+            <input id="nameInput" type="text" maxlength="30" placeholder="Введите имя">
+          </div>
+          <div class="setting-block">
+            <div><h2>Внешний вид</h2><p>Выберите оформление интерфейса.</p></div>
+            <div class="theme-options">
+              <button class="theme-choice selected" data-theme="light">☀ Светлая</button>
+              <button class="theme-choice" data-theme="dark">☾ Тёмная</button>
+            </div>
+          </div>
+          <div class="setting-block">
+            <div><h2>Размер текста</h2><p>Можно увеличить текст для удобства чтения.</p></div>
+            <button class="outline-button" id="fontToggle">Увеличить текст</button>
+          </div>
+          <div class="setting-block">
+            <div><h2>Локальные данные</h2><p>Задачи и настройки хранятся в этом браузере.</p></div>
+            <button class="danger-button" id="clearData">Сбросить данные</button>
+          </div>
+        </div>
+        <p class="helper-text"></p>
+      </section>
+
+      <footer class="footer">
+        <span>Комфорт+ © 2026</span>
+        <span>Технологии, которые работают для человека.</span>
+      </footer>
+    </main>
+  </div>
+
+  <div class="modal-overlay" id="taskModal">
+    <div class="modal">
+      <button class="modal-close" id="closeModal">×</button>
+      <div class="eyebrow">НОВОЕ ДЕЛО</div>
+      <h2>Добавить задачу</h2>
+      <form id="taskForm">
+        <label for="taskTitle">Название задачи</label>
+        <input id="taskTitle" type="text" maxlength="90" placeholder="Например, подготовить проект" required>
+        <label for="taskCategory">Категория</label>
+        <select id="taskCategory">
+          <option>Личное</option>
+          <option>Учёба</option>
+          <option>Дом</option>
+          <option>Работа</option>
+          <option>Другое</option>
+        </select>
+        <label for="taskDate">Дата</label>
+        <input id="taskDate" type="date">
+        <button class="primary-button full-button" type="submit">Сохранить задачу</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="scenarioModal">
+    <div class="modal">
+      <button class="modal-close" id="closeScenarioModal">×</button>
+      <div class="eyebrow">ЖИЗНЕННЫЙ СЦЕНАРИЙ</div>
+      <h2 id="scenarioTitle">Сценарий</h2>
+      <p class="subtitle">Отметьте пункты, которые уже выполнены.</p>
+      <div id="scenarioChecklist" class="scenario-checklist"></div>
+      <button class="primary-button full-button" id="finishScenario">Готово</button>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
